@@ -29,7 +29,7 @@ const handleUserInput =  (key) => {
   }
 
   if(key === 'q') {
-    connection.write('Say: Gotcha')
+    connection.write('Say: Gotcha!')
   }
 
 
@@ -38,8 +38,6 @@ const handleUserInput =  (key) => {
     process.exit();
   }
 }; 
-
-
 
 
 module.exports = {setupInput};
