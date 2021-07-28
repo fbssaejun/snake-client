@@ -1,21 +1,27 @@
 const net = require('net')
+const {IP, PORT, USERNAME} = require("./constants")
 
 const connect = function () {
-  const conn = net.createConnection({
-    port: '50542',
-    host: '135.23.223.133'}
-    
-  );
-  conn.setEncoding('utf8');
-
+  const conn = net.createConnection(
+    {
+    port: PORT,
+    host: IP
+  }
+);
 
   conn.on("connect", () => {
     console.log(`Successfully connected!`)
-    conn.write(`Name: ANK`)
+    conn.write(`Name: ${USERNAME}`)
   });
 
+  conn.on("connect", () => {
+    conn.write("Say: TOR");
+  });
 
-
+  conn.setTimeout(1000);
+  conn.on('timeout', () => {
+    conn.write('Say: EAT!');
+  });
 
   conn.on('data', (data) => {
     console.log('Server says: ', data);
